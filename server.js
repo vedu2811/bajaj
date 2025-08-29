@@ -40,9 +40,9 @@ app.post("/bfhl", (req, res) => {
     return !isNumber(char) && !isAlphabet(char);
   };
 
-  const concat = (items) => {
+  const concat = (letters) => {
     const allChars = [];
-    items.forEach((item) => {
+    letters.forEach((item) => {
       for (let char of item) {
         if (isAlphabet(char)) {
           allChars.push(char.toLowerCase());
@@ -93,6 +93,7 @@ app.post("/bfhl", (req, res) => {
     }
   });
 
+  const concatString = concat(letters);
   const user_id = `${myDetails.name}_${myDetails.birth}`;
 
   const response = {
@@ -105,7 +106,7 @@ app.post("/bfhl", (req, res) => {
     alphabets: letters,
     special_characters: special,
     sum: sum,
-    data: data,
+    concat_string: concatString,
   };
   res.status(200).json(response);
 });
