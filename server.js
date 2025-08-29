@@ -12,6 +12,14 @@ app.get("/", (req, res) => {
   res.send("API is Working");
 });
 
+// POST
+app.post("/bfhl", (req, res) => {
+  res.json({
+    message: "Post endpoint working",
+    data: req.body,
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
