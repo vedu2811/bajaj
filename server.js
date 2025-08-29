@@ -33,9 +33,13 @@ app.post("/bfhl", (req, res) => {
   const isNumber = (str) => {
     return !isNaN(str) && !isNaN(parseFloat(str));
   };
+  const isAlphabet = (char) => {
+    return /^[a-zA-Z]$/.test(char);
+  };
 
   const odd = [];
   const even = [];
+  const letters = [];
   let sum = 0;
 
   data.forEach((item) => {
@@ -50,6 +54,8 @@ app.post("/bfhl", (req, res) => {
       } else {
         odd.push(str);
       }
+    } else if (str.split("").every((char) => isAlphabet(char))) {
+      letters.push(str.toUpperCase());
     }
   });
 
@@ -62,6 +68,7 @@ app.post("/bfhl", (req, res) => {
     roll_number: myDetails.reg,
     odd_numbers: odd,
     even_numbers: even,
+    alphabets: letters,
     sum: sum,
     data: data,
   };
