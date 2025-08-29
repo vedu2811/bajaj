@@ -22,7 +22,7 @@ app.get("/bfhl", (req, res) => {
 const myDetails = {
   name: "vedant_jalan",
   birth: "28112003",
-  email: "vedant28j@gmail.com",
+  email: "vedant.22bce9182@vitapstudent.ac.in",
   reg: "22BCE9182",
 };
 
