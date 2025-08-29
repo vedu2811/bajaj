@@ -31,6 +31,14 @@ app.post("/bfhl", (req, res) => {
   }
 
   const user_id = `${myDetails.name}_${myDetails.birth}`;
+
+  const response = {
+    is_success: true,
+    user_id: user_id,
+    email: myDetails.email,
+    roll_number: myDetails.reg,
+    data: data,
+  };
 });
 
 app.listen(PORT, () => {
