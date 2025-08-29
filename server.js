@@ -12,6 +12,13 @@ app.get("/", (req, res) => {
   res.send("API is Working");
 });
 
+const myDetails = {
+  name: "vedant_jalan",
+  birth: "28112003",
+  email: "vedant28j@gmail.com",
+  reg: "22BCE9182",
+};
+
 // POST
 app.post("/bfhl", (req, res) => {
   const { data } = req.body;
@@ -22,6 +29,8 @@ app.post("/bfhl", (req, res) => {
       message: "Invalid input",
     });
   }
+
+  const user_id = `${myDetails.name}_${myDetails.birth}`;
 });
 
 app.listen(PORT, () => {
