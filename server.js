@@ -8,9 +8,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is Working");
-});
+
 
 const myDetails = {
   name: "vedant_jalan",
@@ -18,6 +16,16 @@ const myDetails = {
   email: "vedant28j@gmail.com",
   reg: "22BCE9182",
 };
+
+app.get("/", (req, res) => {
+  res.send("API is Working");
+});
+
+app.get('/bfhl',(req,res)){
+    res.status(200).json({
+    operation_code: 1
+  });
+}
 
 // POST
 app.post("/bfhl", (req, res) => {
