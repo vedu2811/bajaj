@@ -39,6 +39,7 @@ app.post("/bfhl", (req, res) => {
     roll_number: myDetails.reg,
     data: data,
   };
+  res.status(200).json(response);
 });
 
 app.listen(PORT, () => {
