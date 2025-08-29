@@ -40,6 +40,30 @@ app.post("/bfhl", (req, res) => {
     return !isNumber(char) && !isAlphabet(char);
   };
 
+  const concat = (items) => {
+    const allChars = [];
+    items.forEach((item) => {
+      for (let char of item) {
+        if (isAlphabet(char)) {
+          allChars.push(char.toLowerCase());
+        }
+      }
+    });
+
+    allChars.reverse();
+
+    let result = "";
+    for (let i = 0; i < allChars.length; i++) {
+      if (i % 2 === 0) {
+        result += allChars[i].toLowerCase();
+      } else {
+        result += allChars[i].toUpperCase();
+      }
+    }
+
+    return result;
+  };
+
   const odd = [];
   const even = [];
   const letters = [];
