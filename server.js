@@ -36,10 +36,14 @@ app.post("/bfhl", (req, res) => {
   const isAlphabet = (char) => {
     return /^[a-zA-Z]$/.test(char);
   };
+  const isSpecial = (char) => {
+    return !isNumber(char) && !isAlphabet(char);
+  };
 
   const odd = [];
   const even = [];
   const letters = [];
+  const special = [];
   let sum = 0;
 
   data.forEach((item) => {
@@ -56,6 +60,12 @@ app.post("/bfhl", (req, res) => {
       }
     } else if (str.split("").every((char) => isAlphabet(char))) {
       letters.push(str.toUpperCase());
+    } else if (str.split("").some((char) => isSpecial(char))) {
+      str.split("").forEach((char) => {
+        if (isSpecial(char)) {
+          special.push(char);
+        }
+      });
     }
   });
 
@@ -69,6 +79,7 @@ app.post("/bfhl", (req, res) => {
     odd_numbers: odd,
     even_numbers: even,
     alphabets: letters,
+    special_characters: special,
     sum: sum,
     data: data,
   };
