@@ -14,10 +14,14 @@ app.get("/", (req, res) => {
 
 // POST
 app.post("/bfhl", (req, res) => {
-  res.json({
-    message: "Post endpoint working",
-    data: req.body,
-  });
+  const { data } = req.body;
+
+  if (!data || !Array.isArray(data)) {
+    return res.status(400).json({
+      is_success: false,
+      message: "Invalid input",
+    });
+  }
 });
 
 app.listen(PORT, () => {
