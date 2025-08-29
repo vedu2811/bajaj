@@ -30,6 +30,29 @@ app.post("/bfhl", (req, res) => {
     });
   }
 
+  const isNumber = (str) => {
+    return !isNaN(str) && !isNaN(parseFloat(str));
+  };
+
+  const odd = [];
+  const even = [];
+  let sum = 0;
+
+  data.forEach((item) => {
+    const str = String(item);
+
+    if (isNumber(str)) {
+      const num = parseInt(str);
+      sum += num;
+
+      if (num % 2 == 0) {
+        even.push(str);
+      } else {
+        odd.push(str);
+      }
+    }
+  });
+
   const user_id = `${myDetails.name}_${myDetails.birth}`;
 
   const response = {
@@ -37,6 +60,9 @@ app.post("/bfhl", (req, res) => {
     user_id: user_id,
     email: myDetails.email,
     roll_number: myDetails.reg,
+    odd_numbers: odd,
+    even_numbers: even,
+    sum: sum,
     data: data,
   };
   res.status(200).json(response);
